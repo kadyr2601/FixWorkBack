@@ -12,4 +12,6 @@ urlpatterns = [
     path('blog/<str:slug>', views.BlogRetrieve.as_view()),
     path('partner-list', views.PartnerListView.as_view()),
     path('feedback-create', views.FeedbackCreateView.as_view()),
+    path('restoration-list', views.RestorationListView.as_view()),
+    path('restoration/<str:slug>', views.RestorationRetrieve.as_view()),
 ]

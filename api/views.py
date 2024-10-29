@@ -77,3 +77,15 @@ class FeedbackCreateView(views.APIView):
             models.FeedbackFile.objects.create(feedback=feedback, file=file)
 
         return Response({'status': 'ok'})
+
+
+class RestorationListView(generics.ListAPIView):
+    queryset = models.Restoration.objects.all()
+    serializer_class = serializers.RestorationListSerializer
+
+
+class RestorationRetrieve(generics.RetrieveAPIView):
+    queryset = models.Restoration.objects.all()
+    serializer_class = serializers.RestorationSerializer
+    pagination_class = None
+    lookup_field = "slug"

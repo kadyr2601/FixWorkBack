@@ -81,3 +81,17 @@ class FeedbackAdmin(admin.ModelAdmin):
     inlines = [FeedbackFileInline]
 
 
+admin.site.register(models.SEO)
+admin.site.register(models.FAQ)
+
+class RestorationServiceInline(admin.StackedInline):
+    model = models.RestorationService
+    extra = 1
+
+
+@admin.register(models.Restoration)
+class RestorationAdmin(admin.ModelAdmin):
+    readonly_fields = ('slug',)
+    inlines = [RestorationServiceInline,]
+
+

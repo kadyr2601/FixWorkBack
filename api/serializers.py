@@ -85,3 +85,24 @@ class FeedbackSerializer(serializers.ModelSerializer):
         for file_data in files_data:
             models.FeedbackFile.objects.create(feedback=feedback, **file_data)
         return feedback
+
+
+class RestorationServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.RestorationService
+        fields = '__all__'
+
+
+class RestorationSerializer(serializers.ModelSerializer):
+    services = RestorationServiceSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = models.Restoration
+        fields = '__all__'
+        depth = 1
+
+
+class RestorationListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Restoration
+        fields = ('id', 'name_ru', 'name_en', 'slug')
