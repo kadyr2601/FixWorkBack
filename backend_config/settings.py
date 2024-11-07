@@ -7,7 +7,9 @@ SECRET_KEY = 'django-insecure-pefht-py8w_(3)a-evcui64zxt@0bgegcy#hql=w3o)4i6i@%c
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.16', '127.0.0.1']
+ALLOWED_HOSTS = ['http://fixworks-team.com', 'http://www.fixworks-team.com']
+
+# http://fixworks-team.com
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -21,7 +23,14 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
 
-    "api"
+    "api",
+    "home_page",
+    "projects_page",
+    "reviews_page",
+    "restoration_page",
+    "contacts_page",
+    "portfolio_page",
+    "blogs_page",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +62,38 @@ TEMPLATES = [
         },
     },
 ]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "FixWorks Admin",
+    "site_header": "FixWorks",
+    "site_brand": "FixWorks",
+    "login_logo": None,
+    "login_logo_dark": None,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    "welcome_sign": "Welcome to the FixWorks Admin Panel",
+    "copyright": "2024",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": [
+        "home_page",
+        "portfolio_page",
+        "blogs_page",
+        "restoration_page",
+        "projects_page",
+        "reviews_page",
+        "contacts_page",
+        "api",
+        "auth"
+    ],
+    "related_modal_active": True,
+    "changeform_format": "horizontal_tabs",
+    "language_chooser": False,
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -100,6 +141,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://0.0.0.0:3000', 'http://192.168.1.16']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://www.fixworks-team.com', 'http://fixworks-team.com']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://0.0.0.0:3000', 'http://192.168.1.16']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://www.fixworks-team.com', 'http://fixworks-team.com']

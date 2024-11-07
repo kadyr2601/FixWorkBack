@@ -1,39 +1,6 @@
 from django.contrib import admin
 from . import models
-from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
-
-admin.site.site_header = _("FixWorks")
-admin.site.site_title = _("Панель администратора FixWorks")
-admin.site.index_title = _("Добро пожаловать в админку FixWorks")
-
-admin.site.register(models.MainBanner)
-
-class ProjectSectionInline(admin.StackedInline):
-    model = models.ProjectSection
-    extra = 1
-
-class ProjectAdmin(admin.ModelAdmin):
-    inlines = [ProjectSectionInline,]
-
-admin.site.register(models.Project, ProjectAdmin)
-
-admin.site.register(models.Portfolio)
-
-admin.site.register(models.ServiceCard)
-
-admin.site.register(models.Service)
-
-admin.site.register(models.PageBanner)
-
-admin.site.register(models.Review)
-
-admin.site.register(models.Blog)
-
-
-@admin.register(models.Partner)
-class PartnerAdmin(admin.ModelAdmin):
-    readonly_fields = ('name',)
 
 
 class FeedbackFileInline(admin.StackedInline):
@@ -80,18 +47,4 @@ class FeedbackFileInline(admin.StackedInline):
 class FeedbackAdmin(admin.ModelAdmin):
     inlines = [FeedbackFileInline]
 
-
 admin.site.register(models.SEO)
-admin.site.register(models.FAQ)
-
-class RestorationServiceInline(admin.StackedInline):
-    model = models.RestorationService
-    extra = 1
-
-
-@admin.register(models.Restoration)
-class RestorationAdmin(admin.ModelAdmin):
-    readonly_fields = ('slug',)
-    inlines = [RestorationServiceInline,]
-
-
