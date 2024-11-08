@@ -7,8 +7,8 @@ class ProjectsPageView(views.APIView):
         project_list = models.Project.objects.all()
         projects_page = models.ProjectsPage.objects.first()
 
-        projects_page_serializer = serializers.ProjectPageSerializer(projects_page, context={'request': request})
-        project_list_serializer = serializers.ProjectSerializer(project_list, many=True, context={'request': request})
+        projects_page_serializer = serializers.ProjectPageSerializer(projects_page)
+        project_list_serializer = serializers.ProjectSerializer(project_list, many=True)
 
         data = projects_page_serializer.data
         data['project_list'] = project_list_serializer.data

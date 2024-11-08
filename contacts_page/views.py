@@ -10,5 +10,5 @@ class ContactPageSerializer(serializers.ModelSerializer):
 class ContactPageView(views.APIView):
     def get(self, request):
         contact_page = ContactsPage.objects.first()
-        serializer = ContactPageSerializer(contact_page, context={'request': request})
+        serializer = ContactPageSerializer(contact_page)
         return response.Response(serializer.data)

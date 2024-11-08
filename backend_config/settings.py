@@ -7,9 +7,7 @@ SECRET_KEY = 'django-insecure-pefht-py8w_(3)a-evcui64zxt@0bgegcy#hql=w3o)4i6i@%c
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://fixworks-team.com', 'http://www.fixworks-team.com']
-
-# http://fixworks-team.com
+ALLOWED_HOSTS = ['fixworks-team.com', 'www.fixworks-team.com']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -132,7 +130,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
@@ -141,6 +138,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://www.fixworks-team.com', 'http://fixworks-team.com']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://www.fixworks-team.com',
+    'https://fixworks-team.com'
+]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://www.fixworks-team.com', 'http://fixworks-team.com']
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://www.fixworks-team.com',
+    'https://fixworks-team.com'
+]

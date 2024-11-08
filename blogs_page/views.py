@@ -15,15 +15,18 @@ class BlogsPageSerializer(serializers.ModelSerializer):
 class BlogsPageView(views.APIView):
     def get(self, request, *args, **kwargs):
         page = BlogsPage.objects.first()
-        serializer = BlogsPageSerializer(page, context={'request': request})
+        serializer = BlogsPageSerializer(page)
+        return response.Response(serializer.data)
+
+class BlogView(views.APIView):
+    def get(self, request, *args, **kwargs):
+        blog = Blog.objects.all()
+        serializer = BlogSerializer(blog, many=True)
         return response.Response(serializer.data)
 
 
-class BlogView(generics.ListAPIView):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
-
-class BlogRetrieve(generics.RetrieveAPIView):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
-    lookup_field = 'slug'
+class BlogRetrieve(views.APIView):
+    def get(self, request, *args, **kwargs):
+        blog = Blog.objects.get(slug=kwargs['slug'])
+        serializer = BlogSerializer(blog)
+        return response.Response(serializer.data)

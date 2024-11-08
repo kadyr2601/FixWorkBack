@@ -1,8 +1,9 @@
-from rest_framework import generics
+from rest_framework import views, response
 from restoration_page import models, serializers
 
 
-class RestorationRetrieve(generics.RetrieveAPIView):
-    queryset = models.Restoration.objects.all()
-    serializer_class = serializers.RestorationSerializer
-    lookup_field = 'slug'
+class RestorationRetrieve(views.APIView):
+    def get(self, request, slug):
+        restoration = models.Restoration.objects.get(slug=slug)
+        serializer = serializers.RestorationSerializer(restoration)
+        return response.Response(serializer.data)
