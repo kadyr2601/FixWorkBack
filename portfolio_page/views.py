@@ -3,11 +3,9 @@ from .models import Portfolio, PortfolioPage
 from .serializers import PortfolioSerializer, PortfolioPageSerializer
 
 
-class PortfolioList(views.APIView):
-    def get(self, request):
-        portfolios = Portfolio.objects.all()
-        serializer = PortfolioSerializer(portfolios, many=True)
-        return response.Response(serializer.data)
+class PortfolioList(generics.ListAPIView):
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
 
 class PortfolioPageView(views.APIView):
     def get(self, request):

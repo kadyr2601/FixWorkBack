@@ -1,12 +1,10 @@
-from rest_framework import response, views
+from rest_framework import response, views, generics
 from . import models, serializers
 
 
-class ReviewListView(views.APIView):
-    def get(self, request):
-        reviews = models.Review.objects.all()
-        serializer = serializers.ReviewSerializer(reviews, many=True)
-        return response.Response(serializer.data)
+class ReviewListView(generics.ListAPIView):
+    queryset = models.Review.objects.all()
+    serializer_class = serializers.ReviewSerializer
 
 class ReviewsPageView(views.APIView):
     def get(self, request):

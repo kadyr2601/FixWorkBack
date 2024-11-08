@@ -18,11 +18,9 @@ class BlogsPageView(views.APIView):
         serializer = BlogsPageSerializer(page)
         return response.Response(serializer.data)
 
-class BlogView(views.APIView):
-    def get(self, request, *args, **kwargs):
-        blog = Blog.objects.all()
-        serializer = BlogSerializer(blog, many=True)
-        return response.Response(serializer.data)
+class BlogView(generics.ListAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
 
 
 class BlogRetrieve(views.APIView):
